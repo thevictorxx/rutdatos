@@ -9,7 +9,7 @@ Una forma fácil de obtener los datos de una persona por medio del Rut, además 
 📎 Clonamos el repositorio
 
 ```bash
-gitclone
+git clone https://github.com/thevictorxx/rutdatos.git
 ```
 
 📦 Instalamos las dependencias
