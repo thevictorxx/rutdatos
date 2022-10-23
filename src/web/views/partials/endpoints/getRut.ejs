@@ -1,0 +1,87 @@
+<h3>Obtener informacion de un RUT</h3>
+
+<h5>Petición</h5>
+
+<pre class="w-100"><code class="language-text w-100">GET <%= url_page %>/api/v1/rut/:rut</code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parametro</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>:rut</td>
+      <td>Rut del que se desea obtener la información disponible, puede ser de formato <b>12345678-9</b> o <b>12.345.678-9</b></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h5>Respuesta</h5>
+
+<p><b>Status code 200</b></p>
+
+<div class="card-example m-bottom">
+
+  <div class="example-lang" style="border-radius: 8px 8px 0px 0px">
+    <span>JSON</span>
+  </div>
+
+  <div class="code-example">
+
+    <pre><code class="language-json">{
+  &quot;isValidRut&quot;: true,
+  &quot;rut&quot;: &quot;12345678-9&quot;,
+  &quot;name&quot;: &quot;APELLIDO_P APELLIDO_M NOMBRE_1 NOMBRE_2&quot;,
+  &quot;gender&quot;: &quot;HOMBRE|MUJER&quot;,
+  &quot;address&quot;: &quot;DIRECCIÓN&quot;,
+  &quot;city&quot;: &quot;CIUDAD&quot;
+}</code></pre>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Tipo</th>
+      <th>Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>isValidRut</td>
+      <td>boolean</td>
+      <td>Indica si el Rut ingresado es válido según reglamento vigente, si no es válido la petición se ejecuta de igual manera, pero los valores que se retornan con información serán el rut y isValisRut, los demás valores serán cadenas de texto vacías.</td>
+    </tr>
+    <tr>
+      <td>rut</td>
+      <td>string</td>
+      <td>Retorna el Rut ingresado.</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>string</td>
+      <td>Nombre completo.</td>
+    </tr>
+    <tr>
+      <td>gender</td>
+      <td>string</td>
+      <td>Genero de la persona.</td>
+    </tr>
+    <tr>
+      <td>address</td>
+      <td>string</td>
+      <td>Dirección de su hogar.</td>
+    </tr>
+    <tr>
+      <td>city</td>
+      <td>string</td>
+      <td>Ciudad de referencia y o referencia.</td>
+    </tr>
+  </tbody>
+</table>

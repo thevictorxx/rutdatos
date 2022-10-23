@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="img/favicon.png" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <meta name="theme-color" content="#161b22" />
+    <meta name="description" content="Conoce los datos públicos de una persona ingresando su Rut, incluye api de uso público." />
+    <meta name="keywords" content="rut, nombre, nombres, Rut, datos, obtener, api, libreapi, rest, apellido, apellidos"/>
+    <title>Rut - 🔍 Busqueda de datos</title>
+  </head>
+  <body>
+    <%- include('partials/header') %>
+
+    <main>
+      <h1>Buscar datos por RUT</h1>
+
+      <div class="flex-inline-middle">
+        <input type="text" id="inputRut" placeholder="12345678-9 o 12.345.678-9" />
+        <button id="btnBuscarPorRut" name="btnBuscarPorRut">Buscar</button>
+      </div>
+      <div id="respuertaBusqueda"></div>
+    </main>
+
+    <script src="js/index.js" type="module"></script>
+
+  </body>
+</html>
