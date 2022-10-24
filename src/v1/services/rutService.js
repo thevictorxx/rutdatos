@@ -1,3 +1,4 @@
+const axios = require('axios')
 const purifyText = require('../utils/purifyText')
 const rutValidator = require('../utils/rutValidator')
 
@@ -7,6 +8,7 @@ const rutValidator = require('../utils/rutValidator')
  * @returns
  */
 const getDataByRut = async (rut) => {
+  const URL_API_EXTERNA = 'https://rutificador.org/backend.php'
   const dataByRut = {
     isValidRut: false,
     rut,
@@ -24,14 +26,19 @@ const getDataByRut = async (rut) => {
 
   const options = {
     method: 'POST',
+    url: URL_API_EXTERNA,
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({ action: 'search_by_rut', rut })
+    data: { action: 'search_by_rut', rut }
   }
 
-  const dataFechedByRut = await fetch('https://rutificador.org/backend.php', options)
-    .then((response) => response.text())
-    .then((response) => response)
-    .catch((err) => console.error(err))
+  const dataFechedByRut = await axios
+    .request(options)
+    .then(function (response) {
+      return response.data
+    })
+    .catch(function (error) {
+      console.error(error)
+    })
 
   const dataPurified = purifyText(dataFechedByRut)
 
