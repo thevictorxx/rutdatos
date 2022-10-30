@@ -10,7 +10,6 @@ const $respuertaBusqueda = document.getElementById('respuertaBusqueda')
 
 $btnBuscarPorRut.addEventListener('click', async () => {
   if ($inputRut.value.replaceAll(' ', '') === '') {
-    console.log($inputRut.value)
     escribirMensajeAlerta('Debes introducir un Rut para iniciar la búsqueda.', $respuertaBusqueda)
     return
   }
@@ -25,6 +24,4 @@ $btnBuscarPorRut.addEventListener('click', async () => {
   }
 
   escribirNuevosDatos(datosObtenidos, $respuertaBusqueda)
-
-  console.log(datosObtenidos)
 })
