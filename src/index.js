@@ -4,6 +4,7 @@ const path = require('path')
 require('dotenv').config()
 
 const v1RutRouter = require('./v1/routes/rutRoutes')
+const v1NombreRouter = require('./v1/routes/nombreRoutes')
 const webRouter = require('./web/routes/webRoutes')
 
 const app = express()
@@ -19,6 +20,7 @@ app.use(morgan(QUERY_LOG_FORMAT))
 
 // Routes
 app.use('/api/v1/rut', v1RutRouter)
+app.use('/api/v1/nombre', v1NombreRouter)
 app.use(webRouter)
 app.use(express.static(path.join(__dirname, 'web', 'static')))
 
