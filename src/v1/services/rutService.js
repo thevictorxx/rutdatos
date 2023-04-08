@@ -8,7 +8,7 @@ const rutValidator = require('../utils/rutValidator')
  * @returns
  */
 const getDataByRut = async (rut) => {
-  const URL_API_EXTERNA = 'https://rutificador.org/backend.php'
+  const URL_API_EXTERNA = 'https://www.nombrerutyfirma.com/rut'
   const dataByRut = {
     isValidRut: false,
     rut,
@@ -28,7 +28,7 @@ const getDataByRut = async (rut) => {
     method: 'POST',
     url: URL_API_EXTERNA,
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    data: { action: 'search_by_rut', rut }
+    data: { term: rut }
   }
 
   const dataFechedByRut = await axios
@@ -43,7 +43,7 @@ const getDataByRut = async (rut) => {
   const dataPurified = purifyText(dataFechedByRut)
 
   dataByRut.isValidRut = isValidRutValidator
-  dataByRut.name = dataPurified[1]
+  dataByRut.name = dataPurified[0]
   dataByRut.gender = dataPurified[2]
   dataByRut.address = dataPurified[3]
   dataByRut.city = dataPurified[4]

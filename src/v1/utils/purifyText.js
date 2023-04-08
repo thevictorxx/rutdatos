@@ -6,27 +6,23 @@
 const purifyText = (textToPurify) => {
   const newTextToPurify = textToPurify
 
+  console.log(textToPurify)
+
   // Remove all inesesary text
   const purifyText = newTextToPurify
-    .replace(
-      '<table class="table table-striped table-hover" ><thead class="thead-dark"><tr><th class="col-xs-2">RUT</th><th>Nombre</th><th>Sexo</th><th>Dirección</th><th>Ciudad</th></tr></thead></tbody><tr>',
-      ''
-    )
-    .replace('</tr><tr></tr></tbody></table>', '')
+    .split('<table class="table table-hover">')[1]
+    .split('</table>')[0].split('<tr tabindex="1">')[1]
+    .split('</tr>')[0]
+    .replace(' style="white-space: nowrap;', '')
+    .replaceAll('"', '')
+    .replaceAll('</td>', '')
+    .split('<td>')
+    .map(str => str.trim())
 
-  // Transform into array
-  const arrText = purifyText.split('</td>')
-
-  // Remove the last empty item
-  arrText.pop()
-
-  // Remove all inesesary text again
-  const finalArray = arrText.map((item) => {
-    return item.replace('<td>', '')
-  })
+  purifyText.shift()
 
   // return array
-  return finalArray
+  return purifyText
 }
 
 module.exports = purifyText
